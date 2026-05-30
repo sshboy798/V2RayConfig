@@ -175,7 +175,7 @@ async def fetch_configs_and_proxies_from_channel(client, channel):
         yesterday = today - timedelta(days=1)
         min_date = yesterday
 
-        async for message in client.iter_messages(channel_entity, limit=150):
+        async for message in client.iter_messages(channel_entity, limit=400):
             message_count += 1
             if message.date:
                 message_date = message.date.date()
@@ -650,7 +650,7 @@ async def send_file_to_destination(client, destination, file_path, caption, pars
         return None
 
 async def post_config_and_proxies_to_channel(client, channel_stats, valid_channels, channel_recent_configs, channel_recent_npvt, channel_recent_proxies):
-    POST_COUNT = 5
+    POST_COUNT = 10
 
     if not valid_channels:
         logger.warning("No valid channels available for post selection.")
